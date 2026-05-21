@@ -1,0 +1,264 @@
+<mat-stepper linear class="stepper-container">
+
+    <!-- STEP 1 : SHIPPING -->
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+
+            <ng-template matStepLabel>Shipping Address</ng-template>
+
+            <div class="form-title">
+                <h2>Shipping Details</h2>
+                <p>Please enter your delivery address</p>
+            </div>
+
+            <div class="form-grid">
+
+                <mat-form-field appearance="outline">
+                    <mat-label>First Name</mat-label>
+                    <input matInput formControlName="firstName" />
+                    @if (
+                    firstFormGroup.get('firstName')?.touched &&
+                    firstFormGroup.get('firstName')?.invalid
+                    ) {
+                    <mat-error>
+                        @if (firstFormGroup.get('firstName')?.errors?.['required']) {
+                        First Name is required
+                        }
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Last Name</mat-label>
+                    <input matInput formControlName="lastName" />
+                       @if (
+                    firstFormGroup.get('lastName')?.touched &&
+                    firstFormGroup.get('lastName')?.invalid
+                    ) {
+                    <mat-error>
+                        @if (firstFormGroup.get('lastName')?.errors?.['required']) {
+                        Last Name is required
+                        }
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Address Line 1</mat-label>
+                    <input matInput formControlName="addressline1" />
+                         @if (
+                    firstFormGroup.get('addressline1')?.touched &&
+                    firstFormGroup.get('addressline1')?.invalid
+                    ) {
+                    <mat-error>
+                        @if (firstFormGroup.get('addressline1')?.errors?.['required']) {
+                        Address is required
+                        }
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Address Line 2</mat-label>
+                    <input matInput formControlName="addressline2" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>City</mat-label>
+                    <input matInput formControlName="city" />
+                             @if (
+                    firstFormGroup.get('city')?.touched &&
+                    firstFormGroup.get('city')?.invalid
+                    ) {
+                    <mat-error>
+                        @if (firstFormGroup.get('city')?.errors?.['required']) {
+                        City is required
+                        }
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>State / Region</mat-label>
+                    <input matInput formControlName="state" />
+                              @if (
+                    firstFormGroup.get('state')?.touched &&
+                    firstFormGroup.get('state')?.invalid
+                    ) {
+                    <mat-error>
+                        @if (firstFormGroup.get('state')?.errors?.['required']) {
+                        State is required
+                        }
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Postal Code</mat-label>
+                    <input matInput formControlName="postalCode" />
+                            @if (
+                    firstFormGroup.get('postalCode')?.touched &&
+                    firstFormGroup.get('postalCode')?.invalid
+                    ) {
+                    <mat-error>
+                        @if (firstFormGroup.get('postalCode')?.errors?.['required']) {
+                        Postal Code is required
+                        }
+                    </mat-error>
+                    }
+                </mat-form-field>
+
+            </div>
+
+            <div class="button-container">
+                <button mat-raised-button color="primary" matStepperNext>
+                    Next
+                </button>
+            </div>
+
+        </form>
+    </mat-step>
+
+    <!-- STEP 2 : PAYMENT -->
+    <mat-step [stepControl]="paymentMethod">
+        <form [formGroup]="paymentMethod">
+
+            <ng-template matStepLabel>Payment Method</ng-template>
+
+            <div class="form-title">
+                <h2>Payment Method</h2>
+                <p>Please enter your card details</p>
+            </div>
+
+            <div class="form-grid">
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Name on Card</mat-label>
+                    <input matInput formControlName="nameOnCard" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Card Number</mat-label>
+                    <input matInput formControlName="cardNumber" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>Card Expiry</mat-label>
+                    <input matInput formControlName="cardExpiry" />
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>CVV</mat-label>
+                    <input matInput type="password" formControlName="cvv" />
+                </mat-form-field>
+
+            </div>
+
+            <div class="button-container">
+                <button mat-button matStepperPrevious>
+                    Back
+                </button>
+
+                <button mat-raised-button color="primary" matStepperNext>
+                    Next
+                </button>
+            </div>
+
+        </form>
+    </mat-step>
+
+    <!-- STEP 3 : REVIEW -->
+    <mat-step>
+
+        <ng-template matStepLabel>Review Order</ng-template>
+
+        <div class="review-container">
+
+            <div class="form-title">
+                <h2>Review Your Order</h2>
+                <p>Please verify your details before placing order</p>
+            </div>
+
+            <!-- SHIPPING DETAILS -->
+            <div class="review-card">
+
+                <h3>Shipping Address</h3>
+
+                <div class="review-row">
+                    <span>First Name</span>
+                    <strong>{{ firstFormGroup.value.firstName }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>Last Name</span>
+                    <strong>{{ firstFormGroup.value.lastName }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>Address Line 1</span>
+                    <strong>{{ firstFormGroup.value.addressline1 }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>Address Line 2</span>
+                    <strong>{{ firstFormGroup.value.addressline2 }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>City</span>
+                    <strong>{{ firstFormGroup.value.city }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>State</span>
+                    <strong>{{ firstFormGroup.value.state }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>Postal Code</span>
+                    <strong>{{ firstFormGroup.value.postalCode }}</strong>
+                </div>
+
+            </div>
+
+            <!-- PAYMENT DETAILS -->
+            <div class="review-card">
+
+                <h3>Payment Details</h3>
+
+                <div class="review-row">
+                    <span>Name on Card</span>
+                    <strong>{{ paymentMethod.value.nameOnCard }}</strong>
+                </div>
+
+                <div class="review-row">
+                    <span>Card Number</span>
+                    <strong>
+                        **** **** **** {{ paymentMethod.value.cardNumber?.slice(-4) }}
+                    </strong>
+                </div>
+
+                <div class="review-row">
+                    <span>Expiry</span>
+                    <strong>{{ paymentMethod.value.cardExpiry }}</strong>
+                </div>
+
+            </div>
+
+            <div class="button-container">
+
+                <button mat-button matStepperPrevious>
+                    Back
+                </button>
+
+                <button mat-raised-button color="primary">
+                    Place Order
+                </button>
+
+            </div>
+
+        </div>
+
+    </mat-step>
+
+</mat-stepper>

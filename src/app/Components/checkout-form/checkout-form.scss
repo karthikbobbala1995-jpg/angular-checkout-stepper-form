@@ -1,0 +1,124 @@
+.stepper-container {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.form-title {
+  margin-bottom: 24px;
+}
+
+.form-title h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.form-title p {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.full-width {
+  grid-column: span 2;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.button-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+button {
+  min-width: 120px;
+  height: 44px;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+/* REVIEW SECTION */
+
+.review-container {
+  margin-top: 10px;
+}
+
+.review-card {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 24px;
+}
+
+.review-card h3 {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 20px;
+  color: #111827;
+}
+
+.review-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.review-row:last-child {
+  border-bottom: none;
+}
+
+.review-row span {
+  color: #6b7280;
+}
+
+.review-row strong {
+  color: #111827;
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .full-width {
+    grid-column: span 1;
+  }
+
+  .stepper-container {
+    margin: 16px;
+    padding: 16px;
+  }
+
+  .review-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .button-container {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
